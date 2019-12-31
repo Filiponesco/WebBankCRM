@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="bankcrm" Class="DataClasses1DataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=KOMPUTER-STACJO;Initial Catalog=bankcrm;Integrated Security=True" SettingsObjectName="BankCRM.Properties.Settings" SettingsPropertyName="bankcrmConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.klienci" Member="klienci">
+    <Type Name="klienci">
+      <Column Name="id_klienci" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="imie" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwisko" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="[e-mail]" Member="e_mail" Type="System.String" DbType="NChar(255)" CanBeNull="true" />
+      <Column Name="telefon" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="pesel" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.uzytkownicy" Member="uzytkownicy">
+    <Type Name="uzytkownicy">
+      <Column Name="id_uzytkownicy" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="login" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="haslo" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="imie" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="nazwisko" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="uprawnienia" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>
