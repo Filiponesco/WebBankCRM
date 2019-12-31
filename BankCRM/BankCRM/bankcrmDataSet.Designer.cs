@@ -270,7 +270,7 @@ namespace BankCRM {
             this.Relations.Add(this.relationFK_zadania_klienci);
             this.relationFK_zadania_uzytkownicy = new global::System.Data.DataRelation("FK_zadania_uzytkownicy", new global::System.Data.DataColumn[] {
                         this.tableuzytkownicy.id_uzytkownicyColumn}, new global::System.Data.DataColumn[] {
-                        this.tablezadania.id_uzytkownicyColumn}, false);
+                        this.tablezadania.autor_id_uzytkownicyColumn}, false);
             this.Relations.Add(this.relationFK_zadania_uzytkownicy);
         }
         
@@ -1040,13 +1040,13 @@ namespace BankCRM {
             
             private global::System.Data.DataColumn columntresc;
             
-            private global::System.Data.DataColumn columnid_uzytkownicy;
-            
             private global::System.Data.DataColumn columnstatus;
             
             private global::System.Data.DataColumn columnid_klienci;
             
             private global::System.Data.DataColumn columntermin;
+            
+            private global::System.Data.DataColumn columnautor_id_uzytkownicy;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
@@ -1107,14 +1107,6 @@ namespace BankCRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public global::System.Data.DataColumn id_uzytkownicyColumn {
-                get {
-                    return this.columnid_uzytkownicy;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public global::System.Data.DataColumn statusColumn {
                 get {
                     return this.columnstatus;
@@ -1134,6 +1126,14 @@ namespace BankCRM {
             public global::System.Data.DataColumn terminColumn {
                 get {
                     return this.columntermin;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public global::System.Data.DataColumn autor_id_uzytkownicyColumn {
+                get {
+                    return this.columnautor_id_uzytkownicy;
                 }
             }
             
@@ -1174,21 +1174,21 @@ namespace BankCRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public zadaniaRow AddzadaniaRow(string tytul, string tresc, uzytkownicyRow parentuzytkownicyRowByFK_zadania_uzytkownicy, string status, klienciRow parentklienciRowByFK_zadania_klienci, System.DateTime termin) {
+            public zadaniaRow AddzadaniaRow(string tytul, string tresc, string status, klienciRow parentklienciRowByFK_zadania_klienci, System.DateTime termin, uzytkownicyRow parentuzytkownicyRowByFK_zadania_uzytkownicy) {
                 zadaniaRow rowzadaniaRow = ((zadaniaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         tytul,
                         tresc,
-                        null,
                         status,
                         null,
-                        termin};
-                if ((parentuzytkownicyRowByFK_zadania_uzytkownicy != null)) {
-                    columnValuesArray[3] = parentuzytkownicyRowByFK_zadania_uzytkownicy[0];
-                }
+                        termin,
+                        null};
                 if ((parentklienciRowByFK_zadania_klienci != null)) {
-                    columnValuesArray[5] = parentklienciRowByFK_zadania_klienci[0];
+                    columnValuesArray[4] = parentklienciRowByFK_zadania_klienci[0];
+                }
+                if ((parentuzytkownicyRowByFK_zadania_uzytkownicy != null)) {
+                    columnValuesArray[6] = parentuzytkownicyRowByFK_zadania_uzytkownicy[0];
                 }
                 rowzadaniaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowzadaniaRow);
@@ -1222,10 +1222,10 @@ namespace BankCRM {
                 this.columnid_zadania = base.Columns["id_zadania"];
                 this.columntytul = base.Columns["tytul"];
                 this.columntresc = base.Columns["tresc"];
-                this.columnid_uzytkownicy = base.Columns["id_uzytkownicy"];
                 this.columnstatus = base.Columns["status"];
                 this.columnid_klienci = base.Columns["id_klienci"];
                 this.columntermin = base.Columns["termin"];
+                this.columnautor_id_uzytkownicy = base.Columns["autor_id_uzytkownicy"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1237,14 +1237,14 @@ namespace BankCRM {
                 base.Columns.Add(this.columntytul);
                 this.columntresc = new global::System.Data.DataColumn("tresc", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntresc);
-                this.columnid_uzytkownicy = new global::System.Data.DataColumn("id_uzytkownicy", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnid_uzytkownicy);
                 this.columnstatus = new global::System.Data.DataColumn("status", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnstatus);
                 this.columnid_klienci = new global::System.Data.DataColumn("id_klienci", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnid_klienci);
                 this.columntermin = new global::System.Data.DataColumn("termin", typeof(global::System.DateTime), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columntermin);
+                this.columnautor_id_uzytkownicy = new global::System.Data.DataColumn("autor_id_uzytkownicy", typeof(int), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnautor_id_uzytkownicy);
                 this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
                                 this.columnid_zadania}, true));
                 this.columnid_zadania.AutoIncrement = true;
@@ -1256,7 +1256,6 @@ namespace BankCRM {
                 this.columntytul.MaxLength = 255;
                 this.columntresc.AllowDBNull = false;
                 this.columntresc.MaxLength = 2147483647;
-                this.columnid_uzytkownicy.AllowDBNull = false;
                 this.columnstatus.AllowDBNull = false;
                 this.columnstatus.MaxLength = 255;
                 this.columnid_klienci.AllowDBNull = false;
@@ -1642,17 +1641,6 @@ namespace BankCRM {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
-            public int id_uzytkownicy {
-                get {
-                    return ((int)(this[this.tablezadania.id_uzytkownicyColumn]));
-                }
-                set {
-                    this[this.tablezadania.id_uzytkownicyColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public string status {
                 get {
                     return ((string)(this[this.tablezadania.statusColumn]));
@@ -1681,6 +1669,22 @@ namespace BankCRM {
                 }
                 set {
                     this[this.tablezadania.terminColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public int autor_id_uzytkownicy {
+                get {
+                    try {
+                        return ((int)(this[this.tablezadania.autor_id_uzytkownicyColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("Wartość z kolumny \'autor_id_uzytkownicy\' w tabeli \'zadania\' to DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tablezadania.autor_id_uzytkownicyColumn] = value;
                 }
             }
             
@@ -1716,6 +1720,18 @@ namespace BankCRM {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
             public void SettytulNull() {
                 this[this.tablezadania.tytulColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public bool Isautor_id_uzytkownicyNull() {
+                return this.IsNull(this.tablezadania.autor_id_uzytkownicyColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+            public void Setautor_id_uzytkownicyNull() {
+                this[this.tablezadania.autor_id_uzytkownicyColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -2646,52 +2662,59 @@ SELECT id_uzytkownicy, login, haslo, imie, nazwisko, uprawnienia FROM uzytkownic
             tableMapping.ColumnMappings.Add("id_zadania", "id_zadania");
             tableMapping.ColumnMappings.Add("tytul", "tytul");
             tableMapping.ColumnMappings.Add("tresc", "tresc");
-            tableMapping.ColumnMappings.Add("id_uzytkownicy", "id_uzytkownicy");
             tableMapping.ColumnMappings.Add("status", "status");
             tableMapping.ColumnMappings.Add("id_klienci", "id_klienci");
             tableMapping.ColumnMappings.Add("termin", "termin");
+            tableMapping.ColumnMappings.Add("autor_id_uzytkownicy", "autor_id_uzytkownicy");
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[zadania] WHERE (([id_zadania] = @Original_id_zadania) AND ((@IsNull_tytul = 1 AND [tytul] IS NULL) OR ([tytul] = @Original_tytul)) AND ([id_uzytkownicy] = @Original_id_uzytkownicy) AND ([status] = @Original_status) AND ([id_klienci] = @Original_id_klienci) AND ([termin] = @Original_termin))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [zadania] WHERE (([id_zadania] = @Original_id_zadania) AND ((@IsNull_tytul = 1 AND [tytul] IS NULL) OR ([tytul] = @Original_tytul)) AND ([status] = @Original_status) AND ((@IsNull_id_klienci = 1 AND [id_klienci] IS NULL) OR ([id_klienci] = @Original_id_klienci)) AND ((@IsNull_termin = 1 AND [termin] IS NULL) OR ([termin] = @Original_termin)) AND ((@IsNull_autor_id_uzytkownicy = 1 AND [autor_id_uzytkownicy] IS NULL) OR ([autor_id_uzytkownicy] = @Original_autor_id_uzytkownicy)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_zadania", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_zadania", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tytul", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tytul", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tytul", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tytul", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_uzytkownicy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_id_klienci", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_klienci", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_klienci", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_klienci", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_termin", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "termin", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_termin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "termin", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_autor_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "autor_id_uzytkownicy", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_autor_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "autor_id_uzytkownicy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[zadania] ([tytul], [tresc], [id_uzytkownicy], [status], [id_klienci], [termin]) VALUES (@tytul, @tresc, @id_uzytkownicy, @status, @id_klienci, @termin);
-SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM zadania WHERE (id_zadania = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [zadania] ([id_zadania], [tytul], [tresc], [status], [id_klienci], [termin], [autor_id_uzytkownicy]) VALUES (@id_zadania, @tytul, @tresc, @status, @id_klienci, @termin, @autor_id_uzytkownicy);
+SELECT id_zadania, tytul, tresc, status, id_klienci, termin, autor_id_uzytkownicy FROM zadania WHERE (id_zadania = @id_zadania)";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_zadania", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_zadania", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tytul", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tytul", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tresc", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tresc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_uzytkownicy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_klienci", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_klienci", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@termin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "termin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@autor_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "autor_id_uzytkownicy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[zadania] SET [tytul] = @tytul, [tresc] = @tresc, [id_uzytkownicy] = @id_uzytkownicy, [status] = @status, [id_klienci] = @id_klienci, [termin] = @termin WHERE (([id_zadania] = @Original_id_zadania) AND ((@IsNull_tytul = 1 AND [tytul] IS NULL) OR ([tytul] = @Original_tytul)) AND ([id_uzytkownicy] = @Original_id_uzytkownicy) AND ([status] = @Original_status) AND ([id_klienci] = @Original_id_klienci) AND ([termin] = @Original_termin));
-SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM zadania WHERE (id_zadania = @id_zadania)";
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [zadania] SET [id_zadania] = @id_zadania, [tytul] = @tytul, [tresc] = @tresc, [status] = @status, [id_klienci] = @id_klienci, [termin] = @termin, [autor_id_uzytkownicy] = @autor_id_uzytkownicy WHERE (([id_zadania] = @Original_id_zadania) AND ((@IsNull_tytul = 1 AND [tytul] IS NULL) OR ([tytul] = @Original_tytul)) AND ([status] = @Original_status) AND ((@IsNull_id_klienci = 1 AND [id_klienci] IS NULL) OR ([id_klienci] = @Original_id_klienci)) AND ((@IsNull_termin = 1 AND [termin] IS NULL) OR ([termin] = @Original_termin)) AND ((@IsNull_autor_id_uzytkownicy = 1 AND [autor_id_uzytkownicy] IS NULL) OR ([autor_id_uzytkownicy] = @Original_autor_id_uzytkownicy)));
+SELECT id_zadania, tytul, tresc, status, id_klienci, termin, autor_id_uzytkownicy FROM zadania WHERE (id_zadania = @id_zadania)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_zadania", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_zadania", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tytul", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tytul", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@tresc", global::System.Data.SqlDbType.Text, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tresc", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_uzytkownicy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@status", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_klienci", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_klienci", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@termin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "termin", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@autor_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "autor_id_uzytkownicy", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_zadania", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_zadania", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_tytul", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tytul", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_tytul", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "tytul", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_uzytkownicy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_status", global::System.Data.SqlDbType.NChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "status", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_id_klienci", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_klienci", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_id_klienci", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "id_klienci", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_termin", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "termin", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_termin", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "termin", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
-            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@id_zadania", global::System.Data.SqlDbType.Int, 4, global::System.Data.ParameterDirection.Input, 0, 0, "id_zadania", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_autor_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "autor_id_uzytkownicy", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_autor_id_uzytkownicy", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "autor_id_uzytkownicy", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2707,8 +2730,8 @@ SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM " +
-                "dbo.zadania";
+            this._commandCollection[0].CommandText = "SELECT id_zadania, tytul, tresc, status, id_klienci, termin, autor_id_uzytkownicy" +
+                " FROM zadania";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -2769,7 +2792,7 @@ SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_id_zadania, string Original_tytul, int Original_id_uzytkownicy, string Original_status, int Original_id_klienci, System.DateTime Original_termin) {
+        public virtual int Delete(int Original_id_zadania, string Original_tytul, string Original_status, global::System.Nullable<int> Original_id_klienci, global::System.Nullable<global::System.DateTime> Original_termin, global::System.Nullable<int> Original_autor_id_uzytkownicy) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_id_zadania));
             if ((Original_tytul == null)) {
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(1));
@@ -2779,15 +2802,36 @@ SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM
                 this.Adapter.DeleteCommand.Parameters[1].Value = ((object)(0));
                 this.Adapter.DeleteCommand.Parameters[2].Value = ((string)(Original_tytul));
             }
-            this.Adapter.DeleteCommand.Parameters[3].Value = ((int)(Original_id_uzytkownicy));
             if ((Original_status == null)) {
                 throw new global::System.ArgumentNullException("Original_status");
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[4].Value = ((string)(Original_status));
+                this.Adapter.DeleteCommand.Parameters[3].Value = ((string)(Original_status));
             }
-            this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_id_klienci));
-            this.Adapter.DeleteCommand.Parameters[6].Value = ((System.DateTime)(Original_termin));
+            if ((Original_id_klienci.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[5].Value = ((int)(Original_id_klienci.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[4].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((Original_termin.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[7].Value = ((System.DateTime)(Original_termin.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[6].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[7].Value = global::System.DBNull.Value;
+            }
+            if ((Original_autor_id_uzytkownicy.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[9].Value = ((int)(Original_autor_id_uzytkownicy.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2808,28 +2852,44 @@ SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string tytul, string tresc, int id_uzytkownicy, string status, int id_klienci, System.DateTime termin) {
+        public virtual int Insert(int id_zadania, string tytul, string tresc, string status, global::System.Nullable<int> id_klienci, global::System.Nullable<global::System.DateTime> termin, global::System.Nullable<int> autor_id_uzytkownicy) {
+            this.Adapter.InsertCommand.Parameters[0].Value = ((int)(id_zadania));
             if ((tytul == null)) {
-                this.Adapter.InsertCommand.Parameters[0].Value = global::System.DBNull.Value;
+                this.Adapter.InsertCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.InsertCommand.Parameters[0].Value = ((string)(tytul));
+                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(tytul));
             }
             if ((tresc == null)) {
                 throw new global::System.ArgumentNullException("tresc");
             }
             else {
-                this.Adapter.InsertCommand.Parameters[1].Value = ((string)(tresc));
+                this.Adapter.InsertCommand.Parameters[2].Value = ((string)(tresc));
             }
-            this.Adapter.InsertCommand.Parameters[2].Value = ((int)(id_uzytkownicy));
             if ((status == null)) {
                 throw new global::System.ArgumentNullException("status");
             }
             else {
                 this.Adapter.InsertCommand.Parameters[3].Value = ((string)(status));
             }
-            this.Adapter.InsertCommand.Parameters[4].Value = ((int)(id_klienci));
-            this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(termin));
+            if ((id_klienci.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[4].Value = ((int)(id_klienci.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
+            }
+            if ((termin.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((System.DateTime)(termin.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((autor_id_uzytkownicy.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[6].Value = ((int)(autor_id_uzytkownicy.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.InsertCommand.Connection.State;
             if (((this.Adapter.InsertCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2850,47 +2910,83 @@ SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string tytul, string tresc, int id_uzytkownicy, string status, int id_klienci, System.DateTime termin, int Original_id_zadania, string Original_tytul, int Original_id_uzytkownicy, string Original_status, int Original_id_klienci, System.DateTime Original_termin, int id_zadania) {
+        public virtual int Update(int id_zadania, string tytul, string tresc, string status, global::System.Nullable<int> id_klienci, global::System.Nullable<global::System.DateTime> termin, global::System.Nullable<int> autor_id_uzytkownicy, int Original_id_zadania, string Original_tytul, string Original_status, global::System.Nullable<int> Original_id_klienci, global::System.Nullable<global::System.DateTime> Original_termin, global::System.Nullable<int> Original_autor_id_uzytkownicy) {
+            this.Adapter.UpdateCommand.Parameters[0].Value = ((int)(id_zadania));
             if ((tytul == null)) {
-                this.Adapter.UpdateCommand.Parameters[0].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[1].Value = global::System.DBNull.Value;
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[0].Value = ((string)(tytul));
+                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(tytul));
             }
             if ((tresc == null)) {
                 throw new global::System.ArgumentNullException("tresc");
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[1].Value = ((string)(tresc));
+                this.Adapter.UpdateCommand.Parameters[2].Value = ((string)(tresc));
             }
-            this.Adapter.UpdateCommand.Parameters[2].Value = ((int)(id_uzytkownicy));
             if ((status == null)) {
                 throw new global::System.ArgumentNullException("status");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[3].Value = ((string)(status));
             }
-            this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(id_klienci));
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(termin));
-            this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(Original_id_zadania));
-            if ((Original_tytul == null)) {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[8].Value = global::System.DBNull.Value;
+            if ((id_klienci.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[4].Value = ((int)(id_klienci.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[7].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[8].Value = ((string)(Original_tytul));
+                this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[9].Value = ((int)(Original_id_uzytkownicy));
+            if ((termin.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((System.DateTime)(termin.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
+            if ((autor_id_uzytkownicy.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[6].Value = ((int)(autor_id_uzytkownicy.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[6].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[7].Value = ((int)(Original_id_zadania));
+            if ((Original_tytul == null)) {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[9].Value = global::System.DBNull.Value;
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[8].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[9].Value = ((string)(Original_tytul));
+            }
             if ((Original_status == null)) {
                 throw new global::System.ArgumentNullException("Original_status");
             }
             else {
                 this.Adapter.UpdateCommand.Parameters[10].Value = ((string)(Original_status));
             }
-            this.Adapter.UpdateCommand.Parameters[11].Value = ((int)(Original_id_klienci));
-            this.Adapter.UpdateCommand.Parameters[12].Value = ((System.DateTime)(Original_termin));
-            this.Adapter.UpdateCommand.Parameters[13].Value = ((int)(id_zadania));
+            if ((Original_id_klienci.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[12].Value = ((int)(Original_id_klienci.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[11].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[12].Value = global::System.DBNull.Value;
+            }
+            if ((Original_termin.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[14].Value = ((System.DateTime)(Original_termin.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[13].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[14].Value = global::System.DBNull.Value;
+            }
+            if ((Original_autor_id_uzytkownicy.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[16].Value = ((int)(Original_autor_id_uzytkownicy.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
+            }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -2911,8 +3007,8 @@ SELECT id_zadania, tytul, tresc, id_uzytkownicy, status, id_klienci, termin FROM
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string tytul, string tresc, int id_uzytkownicy, string status, int id_klienci, System.DateTime termin, int Original_id_zadania, string Original_tytul, int Original_id_uzytkownicy, string Original_status, int Original_id_klienci, System.DateTime Original_termin) {
-            return this.Update(tytul, tresc, id_uzytkownicy, status, id_klienci, termin, Original_id_zadania, Original_tytul, Original_id_uzytkownicy, Original_status, Original_id_klienci, Original_termin, Original_id_zadania);
+        public virtual int Update(string tytul, string tresc, string status, global::System.Nullable<int> id_klienci, global::System.Nullable<global::System.DateTime> termin, global::System.Nullable<int> autor_id_uzytkownicy, int Original_id_zadania, string Original_tytul, string Original_status, global::System.Nullable<int> Original_id_klienci, global::System.Nullable<global::System.DateTime> Original_termin, global::System.Nullable<int> Original_autor_id_uzytkownicy) {
+            return this.Update(Original_id_zadania, tytul, tresc, status, id_klienci, termin, autor_id_uzytkownicy, Original_id_zadania, Original_tytul, Original_status, Original_id_klienci, Original_termin, Original_autor_id_uzytkownicy);
         }
     }
     

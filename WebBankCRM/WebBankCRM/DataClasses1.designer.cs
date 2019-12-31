@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace BankCRM
+namespace WebBankCRM
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -42,7 +42,7 @@ namespace BankCRM
     #endregion
 		
 		public DataClasses1DataContext() : 
-				base(global::BankCRM.Properties.Settings.Default.bankcrmConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["bankcrmConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}

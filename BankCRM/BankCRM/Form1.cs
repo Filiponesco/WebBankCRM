@@ -14,11 +14,7 @@ namespace BankCRM
 {
     public partial class Form1 : Form
     {
-        const string server = "localhost";
-        const string dataBase = "bankCRM";
-        const string user = "root";
-        const string password = "";
-        SqlConnection con;
+        //SqlConnection con;
         DataClasses1DataContext dc;
         public Form1()
         {
@@ -29,8 +25,8 @@ namespace BankCRM
         {
             // TODO: Ten wiersz kodu wczytuje dane do tabeli 'bankcrmDataSet.klienci' . Możesz go przenieść lub usunąć.
             this.klienciTableAdapter.Fill(this.bankcrmDataSet.klienci);
-            con = new SqlConnection(BankCRM.Properties.Settings.Default.bankcrmConnectionString);
-            dc = new DataClasses1DataContext(con);
+            //con = new SqlConnection(BankCRM.Properties.Settings.Default.bankcrmConnectionString);
+            dc = new DataClasses1DataContext();
             DataBind();
         }
 
