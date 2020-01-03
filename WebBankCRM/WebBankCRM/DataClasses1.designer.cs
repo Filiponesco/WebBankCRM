@@ -36,6 +36,9 @@ namespace WebBankCRM
     partial void Insertzadania(zadania instance);
     partial void Updatezadania(zadania instance);
     partial void Deletezadania(zadania instance);
+    partial void Insertkredyty(kredyty instance);
+    partial void Updatekredyty(kredyty instance);
+    partial void Deletekredyty(kredyty instance);
     partial void Insertuzytkownicy(uzytkownicy instance);
     partial void Updateuzytkownicy(uzytkownicy instance);
     partial void Deleteuzytkownicy(uzytkownicy instance);
@@ -87,6 +90,14 @@ namespace WebBankCRM
 			}
 		}
 		
+		public System.Data.Linq.Table<kredyty> kredyty
+		{
+			get
+			{
+				return this.GetTable<kredyty>();
+			}
+		}
+		
 		public System.Data.Linq.Table<uzytkownicy> uzytkownicy
 		{
 			get
@@ -116,6 +127,8 @@ namespace WebBankCRM
 		
 		private EntitySet<zadania> _zadania;
 		
+		private EntitySet<kredyty> _kredyty;
+		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
@@ -137,6 +150,7 @@ namespace WebBankCRM
 		public klienci()
 		{
 			this._zadania = new EntitySet<zadania>(new Action<zadania>(this.attach_zadania), new Action<zadania>(this.detach_zadania));
+			this._kredyty = new EntitySet<kredyty>(new Action<kredyty>(this.attach_kredyty), new Action<kredyty>(this.detach_kredyty));
 			OnCreated();
 		}
 		
@@ -273,6 +287,19 @@ namespace WebBankCRM
 			}
 		}
 		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="klienci_kredyty", Storage="_kredyty", ThisKey="id_klienci", OtherKey="id_klienci")]
+		public EntitySet<kredyty> kredyty
+		{
+			get
+			{
+				return this._kredyty;
+			}
+			set
+			{
+				this._kredyty.Assign(value);
+			}
+		}
+		
 		public event PropertyChangingEventHandler PropertyChanging;
 		
 		public event PropertyChangedEventHandler PropertyChanged;
@@ -300,6 +327,18 @@ namespace WebBankCRM
 		}
 		
 		private void detach_zadania(zadania entity)
+		{
+			this.SendPropertyChanging();
+			entity.klienci = null;
+		}
+		
+		private void attach_kredyty(kredyty entity)
+		{
+			this.SendPropertyChanging();
+			entity.klienci = this;
+		}
+		
+		private void detach_kredyty(kredyty entity)
 		{
 			this.SendPropertyChanging();
 			entity.klienci = null;
@@ -569,6 +608,205 @@ namespace WebBankCRM
 						this._autor_id_uzytkownicy = default(Nullable<int>);
 					}
 					this.SendPropertyChanged("uzytkownicy");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.kredyty")]
+	public partial class kredyty : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _id_kredyty;
+		
+		private int _id_klienci;
+		
+		private string _kwota;
+		
+		private bool _zgoda_pracownika;
+		
+		private bool _zgoda_kierownika;
+		
+		private EntityRef<klienci> _klienci;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void Onid_kredytyChanging(int value);
+    partial void Onid_kredytyChanged();
+    partial void Onid_klienciChanging(int value);
+    partial void Onid_klienciChanged();
+    partial void OnkwotaChanging(string value);
+    partial void OnkwotaChanged();
+    partial void Onzgoda_pracownikaChanging(bool value);
+    partial void Onzgoda_pracownikaChanged();
+    partial void Onzgoda_kierownikaChanging(bool value);
+    partial void Onzgoda_kierownikaChanged();
+    #endregion
+		
+		public kredyty()
+		{
+			this._klienci = default(EntityRef<klienci>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_kredyty", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id_kredyty
+		{
+			get
+			{
+				return this._id_kredyty;
+			}
+			set
+			{
+				if ((this._id_kredyty != value))
+				{
+					this.Onid_kredytyChanging(value);
+					this.SendPropertyChanging();
+					this._id_kredyty = value;
+					this.SendPropertyChanged("id_kredyty");
+					this.Onid_kredytyChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_klienci", DbType="Int NOT NULL")]
+		public int id_klienci
+		{
+			get
+			{
+				return this._id_klienci;
+			}
+			set
+			{
+				if ((this._id_klienci != value))
+				{
+					if (this._klienci.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.Onid_klienciChanging(value);
+					this.SendPropertyChanging();
+					this._id_klienci = value;
+					this.SendPropertyChanged("id_klienci");
+					this.Onid_klienciChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kwota", DbType="NChar(255) NOT NULL", CanBeNull=false)]
+		public string kwota
+		{
+			get
+			{
+				return this._kwota;
+			}
+			set
+			{
+				if ((this._kwota != value))
+				{
+					this.OnkwotaChanging(value);
+					this.SendPropertyChanging();
+					this._kwota = value;
+					this.SendPropertyChanged("kwota");
+					this.OnkwotaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zgoda_pracownika", DbType="Bit NOT NULL")]
+		public bool zgoda_pracownika
+		{
+			get
+			{
+				return this._zgoda_pracownika;
+			}
+			set
+			{
+				if ((this._zgoda_pracownika != value))
+				{
+					this.Onzgoda_pracownikaChanging(value);
+					this.SendPropertyChanging();
+					this._zgoda_pracownika = value;
+					this.SendPropertyChanged("zgoda_pracownika");
+					this.Onzgoda_pracownikaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_zgoda_kierownika", DbType="Bit NOT NULL")]
+		public bool zgoda_kierownika
+		{
+			get
+			{
+				return this._zgoda_kierownika;
+			}
+			set
+			{
+				if ((this._zgoda_kierownika != value))
+				{
+					this.Onzgoda_kierownikaChanging(value);
+					this.SendPropertyChanging();
+					this._zgoda_kierownika = value;
+					this.SendPropertyChanged("zgoda_kierownika");
+					this.Onzgoda_kierownikaChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="klienci_kredyty", Storage="_klienci", ThisKey="id_klienci", OtherKey="id_klienci", IsForeignKey=true)]
+		public klienci klienci
+		{
+			get
+			{
+				return this._klienci.Entity;
+			}
+			set
+			{
+				klienci previousValue = this._klienci.Entity;
+				if (((previousValue != value) 
+							|| (this._klienci.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._klienci.Entity = null;
+						previousValue.kredyty.Remove(this);
+					}
+					this._klienci.Entity = value;
+					if ((value != null))
+					{
+						value.kredyty.Add(this);
+						this._id_klienci = value.id_klienci;
+					}
+					else
+					{
+						this._id_klienci = default(int);
+					}
+					this.SendPropertyChanged("klienci");
 				}
 			}
 		}

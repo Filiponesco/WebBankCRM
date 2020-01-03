@@ -9,6 +9,7 @@
       <Column Name="telefon" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="pesel" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
       <Association Name="klienci_zadania" Member="zadania" ThisKey="id_klienci" OtherKey="id_klienci" Type="zadania" />
+      <Association Name="klienci_kredyty" Member="kredyty" ThisKey="id_klienci" OtherKey="id_klienci" Type="kredyty" />
     </Type>
   </Table>
   <Table Name="dbo.zadania" Member="zadania">
@@ -22,6 +23,16 @@
       <Column Name="termin" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Association Name="klienci_zadania" Member="klienci" ThisKey="id_klienci" OtherKey="id_klienci" Type="klienci" IsForeignKey="true" />
       <Association Name="uzytkownicy_zadania" Member="uzytkownicy" ThisKey="autor_id_uzytkownicy" OtherKey="id_uzytkownicy" Type="uzytkownicy" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.kredyty" Member="kredyty">
+    <Type Name="kredyty">
+      <Column Name="id_kredyty" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="id_klienci" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="kwota" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="zgoda_pracownika" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="zgoda_kierownika" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Association Name="klienci_kredyty" Member="klienci" ThisKey="id_klienci" OtherKey="id_klienci" Type="klienci" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.uzytkownicy" Member="uzytkownicy">

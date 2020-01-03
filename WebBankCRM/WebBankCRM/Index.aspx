@@ -5,11 +5,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
+    <title>Bank CRM</title>
+    <link href="Style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
         <div>
+            <nav>
+                <ul>
+                    <li><a runat="server" href="~/Zadania">Zadania</a></li>
+                    <li><a runat="server" href="~/WebForm1.aspx">Klienci</a></li>
+                    <li><a runat="server" href="~/Credits.aspx">Kredyty</a></li>
+                </ul>
+            </nav>
         </div>
     </form>
 </body>

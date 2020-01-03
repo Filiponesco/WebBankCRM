@@ -1,2 +1,37 @@
 ﻿body {
+    background: gray;
+    font-family: sans-serif;
 }
+
+nav {
+    width: 100%;
+}
+
+    nav > ul {
+        list-style-type: none;
+        background: #333333;
+        text-align: center;
+        margin: 0px;
+        padding: 0px;
+    }
+
+        nav > ul > li {
+            float: left;
+            height: 65px;
+            width: 100%;
+            background: #333333;
+            text-align: center;
+            padding-top: 35px;
+            /*display: inline;*/
+        }
+
+            nav > ul > li:hover {
+                background-color: #000000;
+                cursor: pointer;
+            }
+
+            nav > ul > li > a {
+                color: white;
+                margin-top: 50px;
+                font-size: 25px;
+            }
