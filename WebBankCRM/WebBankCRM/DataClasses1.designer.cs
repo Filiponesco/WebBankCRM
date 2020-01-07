@@ -848,7 +848,11 @@ namespace WebBankCRM
 		
 		private string _nazwisko;
 		
-		private string _uprawnienia;
+		private bool _administrator;
+		
+		private bool _kierownik;
+		
+		private bool _pracownik;
 		
 		private EntitySet<zadania> _zadania;
 		
@@ -866,8 +870,12 @@ namespace WebBankCRM
     partial void OnimieChanged();
     partial void OnnazwiskoChanging(string value);
     partial void OnnazwiskoChanged();
-    partial void OnuprawnieniaChanging(string value);
-    partial void OnuprawnieniaChanged();
+    partial void OnadministratorChanging(bool value);
+    partial void OnadministratorChanged();
+    partial void OnkierownikChanging(bool value);
+    partial void OnkierownikChanged();
+    partial void OnpracownikChanging(bool value);
+    partial void OnpracownikChanged();
     #endregion
 		
 		public uzytkownicy()
@@ -976,22 +984,62 @@ namespace WebBankCRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_uprawnienia", DbType="NChar(255) NOT NULL", CanBeNull=false)]
-		public string uprawnienia
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_administrator", DbType="Bit NOT NULL")]
+		public bool administrator
 		{
 			get
 			{
-				return this._uprawnienia;
+				return this._administrator;
 			}
 			set
 			{
-				if ((this._uprawnienia != value))
+				if ((this._administrator != value))
 				{
-					this.OnuprawnieniaChanging(value);
+					this.OnadministratorChanging(value);
 					this.SendPropertyChanging();
-					this._uprawnienia = value;
-					this.SendPropertyChanged("uprawnienia");
-					this.OnuprawnieniaChanged();
+					this._administrator = value;
+					this.SendPropertyChanged("administrator");
+					this.OnadministratorChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_kierownik", DbType="Bit NOT NULL")]
+		public bool kierownik
+		{
+			get
+			{
+				return this._kierownik;
+			}
+			set
+			{
+				if ((this._kierownik != value))
+				{
+					this.OnkierownikChanging(value);
+					this.SendPropertyChanging();
+					this._kierownik = value;
+					this.SendPropertyChanged("kierownik");
+					this.OnkierownikChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_pracownik", DbType="Bit NOT NULL")]
+		public bool pracownik
+		{
+			get
+			{
+				return this._pracownik;
+			}
+			set
+			{
+				if ((this._pracownik != value))
+				{
+					this.OnpracownikChanging(value);
+					this.SendPropertyChanging();
+					this._pracownik = value;
+					this.SendPropertyChanged("pracownik");
+					this.OnpracownikChanged();
 				}
 			}
 		}

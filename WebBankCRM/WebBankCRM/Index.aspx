@@ -12,10 +12,12 @@
     <form id="form1" runat="server">
         <div>
             <nav>
-                <ul>
+                <ul id="lista" runat="server">
+                    <li><a class="active" runat="server" href="~/Index.aspx">Strona główna</a></li>
                     <li><a runat="server" href="~/Zadania">Zadania</a></li>
                     <li><a runat="server" href="~/WebForm1.aspx">Klienci</a></li>
                     <li><a runat="server" href="~/Credits.aspx">Kredyty</a></li>
+                    <li style="float:right" ><a runat="server" href="~/Login.aspx">Wyloguj</a></li>
                 </ul>
             </nav>
         </div>

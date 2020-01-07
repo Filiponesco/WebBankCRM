@@ -42,7 +42,9 @@
       <Column Name="haslo" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="imie" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
       <Column Name="nazwisko" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
-      <Column Name="uprawnienia" Type="System.String" DbType="NChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="administrator" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="kierownik" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="pracownik" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
       <Association Name="uzytkownicy_zadania" Member="zadania" ThisKey="id_uzytkownicy" OtherKey="autor_id_uzytkownicy" Type="zadania" />
     </Type>
   </Table>

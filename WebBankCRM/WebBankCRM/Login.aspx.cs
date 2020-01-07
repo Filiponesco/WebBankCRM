@@ -20,7 +20,7 @@ namespace WebBankCRM
             if (IsValidUser())
             {
                 LblMessage.Text = "Zalogowano poprawnie";
-                Response.Redirect("~/WebForm1.aspx");
+                Response.Redirect("~/Index.aspx");
             }
             else
             {
@@ -36,7 +36,8 @@ namespace WebBankCRM
                select a;
             if (selectQuery.Any())
             {
-                Session["user"] = selectQuery;
+                uzytkownicy user = selectQuery.First();
+                Session["user"] = user;
                 return true;
             }
             else
