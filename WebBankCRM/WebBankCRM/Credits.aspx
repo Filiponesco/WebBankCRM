@@ -16,6 +16,7 @@
                 <li><a runat="server" href="~/Zadania">Zadania</a></li>
                 <li><a runat="server" href="~/WebForm1.aspx">Klienci</a></li>
                 <li><a runat="server" href="~/Credits.aspx">Kredyty</a></li>
+                <li><a runat='server' href='~/Uzytkownicy.aspx'>Użytkownicy</a></li>
                 <li style="float:right" ><a runat="server" href="~/Login.aspx">Wyloguj</a></li>
             </ul>
         </nav>

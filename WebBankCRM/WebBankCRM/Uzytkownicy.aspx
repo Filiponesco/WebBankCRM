@@ -1,11 +1,11 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="WebBankCRM.WebForm1" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Uzytkownicy.aspx.cs" Inherits="WebBankCRM.Uzytkownicy" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Bank CRM - Klienci</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Bank CRM - Użytkownicy</title>
     <link href="Style.css" rel="stylesheet" />
 </head>
 <body>
@@ -16,12 +16,12 @@
                     <li><a runat="server" href="~/Zadania">Zadania</a></li>
                     <li><a runat="server" href="~/WebForm1.aspx">Klienci</a></li>
                     <li><a runat="server" href="~/Credits.aspx">Kredyty</a></li>
-                    <li><a runat='server' href='~/Uzytkownicy.aspx'>Użytkownicy</a></li>
+                    <li><a runat='server' href='~/Użytkownicy.aspx'>Uzytkownicy</a></li>
                     <li style="float:right" ><a runat="server" href="~/Login.aspx">Wyloguj</a></li>
                 </ul>
             </nav>
         <div>
-            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="id_klienci"
+            <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="id_uzytkownicy"
                 ShowHeaderWhenEmpty="true"
                 OnRowCommand="GridView1_RowCommand" OnRowEditing="GridView1_RowEditing" OnRowCancelingEdit="GridView1_RowCancelingEdit" 
                 OnRowUpdating="GridView1_RowUpdating" OnRowDeleting="GridView1_RowDeleting"
@@ -41,13 +41,35 @@
                 <Columns>
                     <asp:TemplateField HeaderText="ID">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("id_klienci") %>' runat="server" />
+                            <asp:Label Text='<%# Eval("id_uzytkownicy") %>' runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtID" Text='<%# Eval("id_klienci") %>' runat="server" />
+                            <asp:TextBox ID="txtID" Text='<%# Eval("id_uzytkownicy") %>' runat="server" />
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="txtIDFooter" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Login">
+                        <ItemTemplate>
+                            <asp:Label Text='<%# Eval("login") %>' runat="server" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtLogin" Text='<%# Eval("login") %>' runat="server" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtLoginFooter" runat="server" />
+                        </FooterTemplate>
+                    </asp:TemplateField>
+                    <asp:TemplateField HeaderText="Haslo">
+                        <ItemTemplate>
+                            <asp:Label Text='*******' runat="server" />
+                        </ItemTemplate>
+                        <EditItemTemplate>
+                            <asp:TextBox ID="txtHaslo" Text='<%# Eval("haslo") %>' runat="server" />
+                        </EditItemTemplate>
+                        <FooterTemplate>
+                            <asp:TextBox ID="txtHasloFooter" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Imie">
@@ -72,37 +94,37 @@
                             <asp:TextBox ID="txtNazwiskoFooter" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Email">
+                    <asp:TemplateField HeaderText="Administator">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("e_mail") %>' runat="server" />
+                            <asp:CheckBox Checked='<%# Eval("administrator") %>' onclick="return false;" runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtEmail" Text='<%# Eval("e_mail") %>' runat="server" />
+                            <asp:CheckBox ID="checkAdministrator" Checked='<%# Eval("administrator") %>' runat="server" />
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="txtEmailFooter" runat="server" />
+                            <asp:CheckBox ID="txtAdministratorFooter" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Telefon">
+                    <asp:TemplateField HeaderText="Kierownik">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("telefon") %>' runat="server" />
+                            <asp:CheckBox Checked='<%# Eval("kierownik") %>' onclick="return false;" runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtTelefon" Text='<%# Eval("telefon") %>' runat="server" />
+                            <asp:CheckBox ID="checkKierownik" Checked='<%# Eval("kierownik") %>' runat="server" />
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="txtTelefonFooter" runat="server" />
+                            <asp:CheckBox ID="txtKierownikFooter" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
-                    <asp:TemplateField HeaderText="Pesel">
+                    <asp:TemplateField HeaderText="Pracownik">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("pesel") %>' runat="server" />
+                            <asp:CheckBox Checked='<%# Eval("pracownik") %>' onclick="return false;" runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtPesel" Text='<%# Eval("pesel") %>' runat="server" />
+                            <asp:CheckBox ID="checkPracownik" Checked='<%# Eval("pracownik") %>' runat="server" />
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="txtPeselFooter" runat="server" />
+                            <asp:CheckBox ID="txtPracownikFooter" runat="server" />
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField>
