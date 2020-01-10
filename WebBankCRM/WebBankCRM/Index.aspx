@@ -7,6 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Bank CRM</title>
     <link href="Style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet"/>
 </head>
 <body>
     <form id="form1" runat="server">

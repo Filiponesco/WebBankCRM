@@ -6,7 +6,8 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Logowanie</title>
-    <link href="Style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet"/>
+    <link href="login.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
@@ -20,7 +21,7 @@
 
             <asp:TextBox ID="TxtBoxPassword" runat="server"></asp:TextBox>
 
-            <asp:Button ID="BtnLogin" runat="server" Text="Zaloguj" OnClick="BtnLogin_Click" />
+            <asp:Button class="button" ID="BtnLogin" runat="server" Text="Zaloguj" OnClick="BtnLogin_Click" />
 
             <asp:Label ID="LblMessage" runat="server" Text=""></asp:Label>
 

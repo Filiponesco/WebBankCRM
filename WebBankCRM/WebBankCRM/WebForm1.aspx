@@ -7,20 +7,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Bank CRM - Klienci</title>
     <link href="Style.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
+
 </head>
 <body>
     <form id="form1" runat="server">
             <nav>
                 <ul>
-                    <li><a class="active" runat="server" href="~/Index.aspx">Strona główna</a></li>
+                    <li><a runat="server" href="~/Index.aspx">Strona główna</a></li>
                     <li><a runat="server" href="~/Zadania">Zadania</a></li>
-                    <li><a runat="server" href="~/WebForm1.aspx">Klienci</a></li>
+                    <li><a class="active" runat="server" href="~/WebForm1.aspx">Klienci</a></li>
                     <li><a runat="server" href="~/Credits.aspx">Kredyty</a></li>
                     <li><a runat='server' href='~/Uzytkownicy.aspx'>Użytkownicy</a></li>
                     <li style="float:right" ><a runat="server" href="~/Login.aspx">Wyloguj</a></li>
                 </ul>
             </nav>
-        <div>
+        <div id="tabela">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="id_klienci"
                 ShowHeaderWhenEmpty="true"
                 OnRowCommand="GridView1_RowCommand" OnRowEditing="GridView1_RowEditing" OnRowCancelingEdit="GridView1_RowCancelingEdit" 
@@ -121,9 +124,11 @@
                 </Columns>
             </asp:GridView>
             <br />
-            <asp:Label ID="lblSuccessMessage" Text="" runat="server" ForeColor="Green" />
-            <br />
-            <asp:Label ID="lblErrorMessage" Text="" runat="server" ForeColor="Red" />
+            <div id="messages">
+                <asp:Label ID="lblSuccessMessage" Text="" runat="server" ForeColor="Green" />
+                <br />
+                <asp:Label ID="lblErrorMessage" Text="" runat="server" ForeColor="Red" />
+            </div>
         </div>
     </form>
 </body>

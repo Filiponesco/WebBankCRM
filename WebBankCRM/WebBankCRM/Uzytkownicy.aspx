@@ -6,21 +6,23 @@
 <head runat="server">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title>Bank CRM - Użytkownicy</title>
+    <link href="https://fonts.googleapis.com/css?family=Baloo+Bhai&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Alata&display=swap" rel="stylesheet">
     <link href="Style.css" rel="stylesheet" />
 </head>
 <body>
     <form id="form1" runat="server">
             <nav>
                 <ul>
-                    <li><a class="active" runat="server" href="~/Index.aspx">Strona główna</a></li>
+                    <li><a runat="server" href="~/Index.aspx">Strona główna</a></li>
                     <li><a runat="server" href="~/Zadania">Zadania</a></li>
                     <li><a runat="server" href="~/WebForm1.aspx">Klienci</a></li>
                     <li><a runat="server" href="~/Credits.aspx">Kredyty</a></li>
-                    <li><a runat='server' href='~/Użytkownicy.aspx'>Uzytkownicy</a></li>
+                    <li><a class="active" runat='server' href='~/Uzytkownicy.aspx'>Użytkownicy</a></li>
                     <li style="float:right" ><a runat="server" href="~/Login.aspx">Wyloguj</a></li>
                 </ul>
             </nav>
-        <div>
+        <div id="tabela">
             <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false" ShowFooter="true" DataKeyNames="id_uzytkownicy"
                 ShowHeaderWhenEmpty="true"
                 OnRowCommand="GridView1_RowCommand" OnRowEditing="GridView1_RowEditing" OnRowCancelingEdit="GridView1_RowCancelingEdit" 
@@ -29,7 +31,7 @@
                 BackColor="White" BorderColor="#CCCCCC" BorderStyle="None" BorderWidth="1px" CellPadding="3" AllowSorting="True">
                 <%--Theme Properties --%>
                 <FooterStyle BackColor="White" ForeColor="#000066" />
-                <HeaderStyle BackColor="#006699" Font-Bold="True" ForeColor="White" />
+                <HeaderStyle BackColor="#006699" Font-Bold="False" ForeColor="White" />
                 <PagerStyle BackColor="White" ForeColor="#000066" HorizontalAlign="Left" />
                 <RowStyle ForeColor="#000066" />
                 <SelectedRowStyle BackColor="#669999" Font-Bold="True" ForeColor="White" />
@@ -143,9 +145,11 @@
                 </Columns>
             </asp:GridView>
             <br />
-            <asp:Label ID="lblSuccessMessage" Text="" runat="server" ForeColor="Green" />
-            <br />
-            <asp:Label ID="lblErrorMessage" Text="" runat="server" ForeColor="Red" />
+            <div id="messages">
+                <asp:Label ID="lblSuccessMessage" Text="" runat="server" ForeColor="Green" />
+                <br />
+                <asp:Label ID="lblErrorMessage" Text="" runat="server" ForeColor="Red" />
+            </div>
         </div>
     </form>
 </body>

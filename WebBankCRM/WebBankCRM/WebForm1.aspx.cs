@@ -12,6 +12,10 @@ namespace WebBankCRM
         //DataClasses1DataContext dc;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
             if (!IsPostBack) //bardzo wazne inaczej eventy z gridView nie dzialaja
             {
                 GetData();

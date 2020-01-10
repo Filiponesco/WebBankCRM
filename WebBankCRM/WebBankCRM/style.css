@@ -1,4 +1,8 @@
-﻿ul {
+﻿body {
+    font-family: 'Baloo Bhai', cursive;
+    font-size: 20px;
+}
+ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -29,4 +33,36 @@ li {
 
 .active {
     background-color: #4CAF50;
+}
+#tabela {
+    padding-top: 5px;
+    width: 100%;
+}
+
+#GridView1 {
+    font-family: 'Alata', sans-serif;
+    width: 70%;
+    margin: auto;
+}
+input[type=text], input[type=password] {
+    font-family: 'Alata', sans-serif;
+    width: 100%;
+    padding: 8px 5px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+select {
+    font-family: 'Alata', sans-serif;
+    width: 100%;
+    padding: 5px 2px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    font-size: 20px;
+}
+#messages {
+    width: 100%;
+    text-align: center;
 }

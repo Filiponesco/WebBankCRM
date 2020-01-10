@@ -21,9 +21,7 @@ namespace WebBankCRM
                 uzytkownicy actualUser = (uzytkownicy) Session["User"];
                 if (actualUser.administrator)
                 {
-                    //STH doing when administator is login
-                    //HtmlGenericControl ul = new HtmlGenericControl("ul");
-                    //ul.InnerHtml += @"<li><a runat='server' href='~/Uzytkownicy.aspx'>Uzytkownicy</a></li>";
+                    
                 }
             }
         }

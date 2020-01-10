@@ -125,6 +125,7 @@
     <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Index.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="login.css" />
     <Content Include="Style.css" />
     <Content Include="Uzytkownicy.aspx" />
     <Content Include="WebForm1.aspx" />

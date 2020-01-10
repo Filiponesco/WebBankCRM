@@ -11,6 +11,23 @@ namespace WebBankCRM
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Session["User"] == null)
+            {
+                Response.Redirect("~/Login.aspx");
+            }
+            else
+            {
+                uzytkownicy actualUser = (uzytkownicy)Session["User"];
+                if (actualUser.administrator)
+                {
+
+                }
+                else
+                {
+                    Response.Write("<script>alert('Dostępne tylko dla administratora!')</script>");
+                    GridView1.Visible = false;
+                }
+            }
             if (!IsPostBack) //bardzo wazne inaczej eventy z gridView nie dzialaja
             {
                 GetData();

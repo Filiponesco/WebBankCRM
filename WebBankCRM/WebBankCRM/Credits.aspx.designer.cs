@@ -24,84 +24,30 @@ namespace WebBankCRM
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Kontrolka LblKwota.
+        /// Kontrolka GridView1.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblKwota;
+        protected global::System.Web.UI.WebControls.GridView GridView1;
 
         /// <summary>
-        /// Kontrolka TxtBoxKwota.
+        /// Kontrolka lblSuccessMessage.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtBoxKwota;
+        protected global::System.Web.UI.WebControls.Label lblSuccessMessage;
 
         /// <summary>
-        /// Kontrolka LblKlient.
+        /// Kontrolka lblErrorMessage.
         /// </summary>
         /// <remarks>
         /// Pole generowane automatycznie.
         /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblKlient;
-
-        /// <summary>
-        /// Kontrolka DropDownListKlient.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownListKlient;
-
-        /// <summary>
-        /// Kontrolka LblZgodaPracownika.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblZgodaPracownika;
-
-        /// <summary>
-        /// Kontrolka CheckBoxZgodaPracownika.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBoxZgodaPracownika;
-
-        /// <summary>
-        /// Kontrolka LblZgodaKierownika.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblZgodaKierownika;
-
-        /// <summary>
-        /// Kontrolka CheckBoxZgodaKierownika.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox CheckBoxZgodaKierownika;
-
-        /// <summary>
-        /// Kontrolka BtnZapisz.
-        /// </summary>
-        /// <remarks>
-        /// Pole generowane automatycznie.
-        /// By zmodyfikować deklaracje pola przenieś ją z pliku projektanta do pliku codebehind.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnZapisz;
+        protected global::System.Web.UI.WebControls.Label lblErrorMessage;
     }
 }
