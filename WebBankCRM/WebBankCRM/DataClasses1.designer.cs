@@ -357,13 +357,13 @@ namespace WebBankCRM
 		
 		private string _tresc;
 		
-		private System.Nullable<int> _autor_id_uzytkownicy;
+		private int _autor_id_uzytkownicy;
 		
 		private string _status;
 		
-		private System.Nullable<int> _id_klienci;
+		private int _id_klienci;
 		
-		private System.Nullable<System.DateTime> _termin;
+		private System.DateTime _termin;
 		
 		private EntityRef<klienci> _klienci;
 		
@@ -379,13 +379,13 @@ namespace WebBankCRM
     partial void OntytulChanged();
     partial void OntrescChanging(string value);
     partial void OntrescChanged();
-    partial void Onautor_id_uzytkownicyChanging(System.Nullable<int> value);
+    partial void Onautor_id_uzytkownicyChanging(int value);
     partial void Onautor_id_uzytkownicyChanged();
     partial void OnstatusChanging(string value);
     partial void OnstatusChanged();
-    partial void Onid_klienciChanging(System.Nullable<int> value);
+    partial void Onid_klienciChanging(int value);
     partial void Onid_klienciChanged();
-    partial void OnterminChanging(System.Nullable<System.DateTime> value);
+    partial void OnterminChanging(System.DateTime value);
     partial void OnterminChanged();
     #endregion
 		
@@ -396,7 +396,7 @@ namespace WebBankCRM
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_zadania", DbType="Int NOT NULL", IsPrimaryKey=true)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_zadania", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
 		public int id_zadania
 		{
 			get
@@ -416,7 +416,7 @@ namespace WebBankCRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tytul", DbType="NChar(255)")]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tytul", DbType="NChar(255) NOT NULL", CanBeNull=false)]
 		public string tytul
 		{
 			get
@@ -436,7 +436,7 @@ namespace WebBankCRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tresc", DbType="Text NOT NULL", CanBeNull=false, UpdateCheck=UpdateCheck.Never)]
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_tresc", DbType="Text", UpdateCheck=UpdateCheck.Never)]
 		public string tresc
 		{
 			get
@@ -456,8 +456,8 @@ namespace WebBankCRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_autor_id_uzytkownicy", DbType="Int")]
-		public System.Nullable<int> autor_id_uzytkownicy
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_autor_id_uzytkownicy", DbType="Int NOT NULL")]
+		public int autor_id_uzytkownicy
 		{
 			get
 			{
@@ -500,8 +500,8 @@ namespace WebBankCRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_klienci", DbType="Int")]
-		public System.Nullable<int> id_klienci
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id_klienci", DbType="Int NOT NULL")]
+		public int id_klienci
 		{
 			get
 			{
@@ -524,8 +524,8 @@ namespace WebBankCRM
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_termin", DbType="Date")]
-		public System.Nullable<System.DateTime> termin
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_termin", DbType="Date NOT NULL")]
+		public System.DateTime termin
 		{
 			get
 			{
@@ -571,7 +571,7 @@ namespace WebBankCRM
 					}
 					else
 					{
-						this._id_klienci = default(Nullable<int>);
+						this._id_klienci = default(int);
 					}
 					this.SendPropertyChanged("klienci");
 				}
@@ -605,7 +605,7 @@ namespace WebBankCRM
 					}
 					else
 					{
-						this._autor_id_uzytkownicy = default(Nullable<int>);
+						this._autor_id_uzytkownicy = default(int);
 					}
 					this.SendPropertyChanged("uzytkownicy");
 				}

@@ -134,6 +134,7 @@
       <LastGenOutput>DataClasses1.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
+    <Content Include="Zadania.aspx" />
     <None Include="DataClasses1.dbml.layout">
       <DependentUpon>DataClasses1.dbml</DependentUpon>
     </None>
@@ -239,6 +240,13 @@
     </Compile>
     <Compile Include="WebForm1.aspx.designer.cs">
       <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Zadania.aspx.cs">
+      <DependentUpon>Zadania.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Zadania.aspx.designer.cs">
+      <DependentUpon>Zadania.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

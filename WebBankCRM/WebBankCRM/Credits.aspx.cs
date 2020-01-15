@@ -96,6 +96,7 @@ namespace WebBankCRM
         private void GetData()
         {
             var dc = new DataClasses1DataContext();
+            //to zwraca tez powiazane tabele
             var selectQuery =
                from a in dc.GetTable<kredyty>()
                select a;

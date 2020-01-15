@@ -44,7 +44,7 @@ li {
     width: 70%;
     margin: auto;
 }
-input[type=text], input[type=password] {
+input[type=text], input[type=password], input[type=date] {
     font-family: 'Alata', sans-serif;
     width: 100%;
     padding: 8px 5px;
