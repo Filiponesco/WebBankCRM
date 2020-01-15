@@ -32,7 +32,7 @@ namespace WebBankCRM
                     newTask.tytul = (GridView1.FooterRow.FindControl("txtTytulFooter") as TextBox).Text.Trim();
                     newTask.tresc = (GridView1.FooterRow.FindControl("txtTrescFooter") as TextBox).Text.Trim();
                     newTask.autor_id_uzytkownicy = Convert.ToInt32((GridView1.FooterRow.FindControl("DDLAutorFooter") as DropDownList).SelectedValue);
-                    newTask.status = (GridView1.FooterRow.FindControl("txtStatusFooter") as TextBox).Text.Trim();
+                    newTask.status = (GridView1.FooterRow.FindControl("DDLStatusFooter") as DropDownList).SelectedItem.Text;
                     newTask.id_klienci = Convert.ToInt32((GridView1.FooterRow.FindControl("DDLDotyczyFooter") as DropDownList).SelectedValue);
                     newTask.termin = Convert.ToDateTime((GridView1.FooterRow.FindControl("txtTerminFooter") as TextBox).Text.Trim());
 
@@ -72,7 +72,7 @@ namespace WebBankCRM
             updTask.tytul = (GridView1.Rows[e.RowIndex].FindControl("txtTytul") as TextBox).Text.Trim();
             updTask.tresc = (GridView1.Rows[e.RowIndex].FindControl("txtTresc") as TextBox).Text.Trim();
             updTask.autor_id_uzytkownicy = Convert.ToInt32((GridView1.Rows[e.RowIndex].FindControl("DDLAutor") as DropDownList).SelectedValue);
-            updTask.status = (GridView1.Rows[e.RowIndex].FindControl("txtStatus") as TextBox).Text.Trim();
+            updTask.status = (GridView1.Rows[e.RowIndex].FindControl("DDLStatus") as DropDownList).SelectedItem.Text; //pobieram tekst
             updTask.id_klienci = Convert.ToInt32((GridView1.Rows[e.RowIndex].FindControl("DDLDotyczy") as DropDownList).SelectedValue);
             updTask.termin = Convert.ToDateTime((GridView1.Rows[e.RowIndex].FindControl("txtTermin") as TextBox).Text.Trim());
             dc.SubmitChanges();
@@ -85,7 +85,6 @@ namespace WebBankCRM
         protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
             var dc = new DataClasses1DataContext();
-            //int id = Int32.Parse(GridView1.Rows[e.RowIndex].Cells[0].Text);
             int id = Convert.ToInt32(GridView1.DataKeys[e.RowIndex].Value);
             zadania delTask = dc.zadania.FirstOrDefault(task => task.id_zadania.Equals(id));
             dc.zadania.DeleteOnSubmit(delTask);
@@ -97,25 +96,10 @@ namespace WebBankCRM
         private void GetData()
         {
             var dc = new DataClasses1DataContext();
-            //var selectQuery =
-            //   from a in dc.GetTable<zadania>()
-            //   select new
-            //   {
-            //       a.id_zadania,
-            //       a.tytul,
-            //       a.tresc,
-            //       a.autor_id_uzytkownicy,
-            //       a.status,
-            //       a.id_klienci,
-            //       //a.uzytkownicy.id_uzytkownicy,
-            //       //a.uzytkownicy.imie,
-            //       //a.uzytkownicy.nazwisko,
-            //       displayTermin = (a.termin.ToString()).Substring(0, 10)
-            //   };
-            //important change in termin ^^
             var selectQuery =
-            from a in dc.GetTable<uzytkownicy>()
+            from a in dc.GetTable<zadania>()
             select a;
+
             GridView1.DataSource = selectQuery;
             GridView1.DataBind();
             BindDropDownList();
@@ -182,7 +166,7 @@ namespace WebBankCRM
             DDLDotyczy.DataValueField = "id_klienci";
             DDLDotyczy.DataBind();
             #endregion
-            #region bindEditDDLDotyczy
+            #region bindEditDDLAutor
             var selectQueryUser =
                from a in dc.GetTable<uzytkownicy>()
                select new

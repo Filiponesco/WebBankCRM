@@ -23,6 +23,15 @@
                 </ul>
             </nav>
         </div>
+        <div id="content">
+            <h1>CRM dla Banku</h1>
+            <h2>Prosta aplikacja webowa do zarządzania klientami</h2>
+            <p>Zarządzanie wszystkimi zadaniami: kliknij w menu ZADANIA</p>
+            <p>Zarządzanie klientami: kliknij w menu KLIENCI</p>
+            <p>Zarządzanie kredytami: kliknij KREDYTY</p>
+            <p>Zarządzanie pracownikami: kliknij UŻYTKOWNICY - dostępne tylko dla administratora</p>
+            <p>Aby się wylogować kliknij wyloguj</p>
+        </div>
     </form>
 </body>
 </html>

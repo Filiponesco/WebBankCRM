@@ -79,10 +79,20 @@
                             <asp:Label Text='<%# Eval("status") %>' runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtStatus" Text='<%# Eval("status") %>' runat="server" />
+                            <asp:DropDownList ID="DDLStatus" runat="server">
+                                <asp:ListItem Text="Nowe" Value="0" />
+                                <asp:ListItem Text="Zaakceptowane" Value="1" />
+                                <asp:ListItem Text="W trakcie" Value="2" />
+                                <asp:ListItem Text="Rozwiązane" Value="3" />
+                            </asp:DropDownList>
                         </EditItemTemplate>
                         <FooterTemplate>
-                            <asp:TextBox ID="txtStatusFooter" runat="server" />
+                            <asp:DropDownList ID="DDLStatusFooter" runat="server">
+                                <asp:ListItem Text="Nowe" Value="0" />
+                                <asp:ListItem Text="Zaakceptowane" Value="1" />
+                                <asp:ListItem Text="W trakcie" Value="2" />
+                                <asp:ListItem Text="Rozwiązane" Value="3" />
+                            </asp:DropDownList>
                         </FooterTemplate>
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Dotyczy">
@@ -98,10 +108,10 @@
                     </asp:TemplateField>
                     <asp:TemplateField HeaderText="Termin">
                         <ItemTemplate>
-                            <asp:Label Text='<%# Eval("displayTermin") %>' runat="server" />
+                            <asp:Label Text='<%# String.Format("{0:d/M/yyyy}", Eval("termin")) %>' runat="server" />
                         </ItemTemplate>
                         <EditItemTemplate>
-                            <asp:TextBox ID="txtTermin" Text='<%# Eval("displayTermin") %>' runat="server" TextMode="Date" />
+                            <asp:TextBox ID="txtTermin" Text='<%# String.Format("{0:d/M/yyyy}", Eval("termin")) %>' runat="server" TextMode="Date" />
                         </EditItemTemplate>
                         <FooterTemplate>
                             <asp:TextBox ID="txtTerminFooter" runat="server" TextMode="Date"/>
